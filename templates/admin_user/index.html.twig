@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index des utilisateurs{% endblock %}
+
+{% block body %}
+	<h1>Index des utilisateurs</h1>
+
+	<table class="table table-striped">
+		<a class="btn btn-success my-3" href="{{ path('app_admin_user_new') }}">Créer un nouvelle utilisateur</a>
+		<thead>
+			<tr>
+				<th>Email</th>
+                <th>Rôle</th>
+				<th>Prénom</th>
+				<th>Nom</th>
+				<th>Compte vérifié</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in users %}
+				<tr>
+					<td>{{ user.email }}</td>
+					<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+					<td>{{ user.prenom }}</td>
+					<td>{{ user.nom }}</td>
+					<td>{{ user.isVerified ? 'Oui' : 'Non' }}</td>
+					<td>
+						<a class="btn btn-primary btn-sm" href="{{ path('app_admin_user_show', {'id': user.id}) }}">Détails</a>
+						<a class="btn btn-info btn-sm" href="{{ path('app_admin_user_edit', {'id': user.id}) }}">Modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="8">Aucun enregistrement trouvé</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

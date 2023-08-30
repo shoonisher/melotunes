@@ -1,0 +1,26 @@
+{% block title %}
+    Confirmation d'Email
+{% endblock %}
+
+{% block body %}
+<div style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
+    <div style="max-width: 600px; margin: 0 auto; background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        <div style="text-align: center; background-color: #007bff; color: white; padding: 10px; border-radius: 10px 10px 0 0;">
+            <h1 style="margin: 0;">Confirmez Votre Email</h1>
+        </div>
+        <div style="padding: 20px;">
+            <h2 style="text-align: center;">Veuillez confirmer votre adresse email</h2>
+
+            <p>
+                Veuillez confirmer votre adresse email en cliquant sur le lien suivant : <br><br>
+                <a href="{{ signedUrl|raw }}" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: white; text-decoration: none; border-radius: 5px;">Confirmez mon Email</a>.
+                Ce lien expirera dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}.
+            </p>
+
+            <p style="text-align: center; margin-top: 30px; font-style: italic;">
+                Cordialement!
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

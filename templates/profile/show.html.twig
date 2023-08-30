@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Profil de l'Utilisateur
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+
+		<div class="card mt-4">
+			<div class="card-body">
+				<h1 class="card-title text-center">Votre Profil :
+					{{ user.prenom }}</h1>
+			</div>
+			<div class="card-body">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<th>Nom</th>
+							<td>{{ user.nom }}</td>
+						</tr>
+						<tr>
+							<th>Prénom</th>
+							<td>{{ user.prenom }}</td>
+						</tr>
+						<tr>
+							<th>Email</th>
+							<td>{{ user.email }}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<a href="{{ path('app_profile_edit') }}" class="btn btn-primary">Modifier Mon Profil</a>
+	</div>
+</div></div>{% endblock %}

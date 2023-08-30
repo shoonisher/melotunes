@@ -1,0 +1,30 @@
+<div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+	<div class="carousel-indicators">
+		<button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Diapositive 1"></button>
+	</div>
+	<div class="carousel-inner">
+		<div class="carousel-item active">
+			<img src="https://yard.media/wp-content/uploads/2022/01/rap-francais-pourquoi-album-projet-2020-2.jpeg" class="d-block w-100" alt="Diapositive 1">
+			<div class="container">
+				<div class="carousel-caption text-start">
+					<h1>Retrouver tous vos artistes ici.</h1>
+					{% if app.user %}
+
+					{% else %}
+						<p>
+							<a class="btn btn-lg btn-primary" href="{{path('app_register')}}">Inscrivez-vous aujourd'hui</a>
+						</p>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Précédent</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Suivant</span>
+		</button>
+	</div>
+</div>

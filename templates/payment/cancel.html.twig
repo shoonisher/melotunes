@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="col-md-6 text-center">
+            <h1 class="display-4">Votre paiement a été annulé</h1>
+            <p class="lead">Nous sommes désolés, mais votre paiement n'a pas été accepté.</p>
+            <p>Vous pouvez réessayer ou contacter notre service client pour obtenir de l'aide.</p>
+            <a href="{{path('app_contact')}}" class="btn btn-secondary mt-3">Contacter le service client</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

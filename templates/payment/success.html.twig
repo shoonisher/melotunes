@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="col-md-6 text-center">
+            <div class="py-5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" fill="currentColor" class="bi bi-check-circle text-success" viewBox="0 0 16 16">
+                    <path d="M7.5 0a7.5 7.5 0 1 0 7.5 7.5A7.5 7.5 0 0 0 7.5 0zm4.027 5.97a.646.646 0 0 1 .933 0c.258.26.258.682 0 .942l-5.4 5.47a.646.646 0 0 1-.933 0l-2.7-2.735a.646.646 0 0 1 .933-.942l2.036 2.056 4.496-4.552z"/>
+                </svg>
+                <h1 class="display-4 mt-3">Votre paiement a été effectué avec succès !</h1>
+                <p class="lead">Merci d'avoir effectué votre paiement.</p>
+                <a href="{{path('app_home')}}" class="btn btn-primary mt-3">Retour à l'accueil</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

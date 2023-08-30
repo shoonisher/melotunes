@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Message Envoyé avec Succès{% endblock %}
+
+{% block body %}
+    <section class="success-section d-flex align-items-center justify-content-center vh-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="card shadow-lg p-5">
+                        <div class="card-body">
+                            <i class="bi bi-check-circle text-success fs-1 mb-4"></i>
+                            <h2 class="card-title mt-3">Message Envoyé avec Succès</h2>
+                            <p class="card-text">Merci d'avoir pris contact avec nous. Nous vous répondrons dès que possible.</p>
+                            <a href="{{ path('app_home') }}" class="btn btn-primary btn-lg mt-4">Retour à l'Accueil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

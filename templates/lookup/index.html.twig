@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats {% endblock %}
+
+{% block body %}
+    <h1 style="color: black;">Résultats de la recherche</h1>
+    <h3 class="my-4" style="color: black;">Produits correspondant à {{ searchTerm }} :</h3>
+    <div>
+        {% for product in products %}
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ asset('uploads/images/products/' ~ product.picture) }}" class="img-fluid rounded-start" alt="{{ product.name }}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <p class="card-text">{{ product.description }}</p>
+                                    <p class="card-text">
+                                        <small class="text-body-secondary">Prix: {{ product.price }} €</small>
+                                    </p>
+                                    <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-primary">Voir Article</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-md-12">
+                <p>Aucun article trouvé.</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

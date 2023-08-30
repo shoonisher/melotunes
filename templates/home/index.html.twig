@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page d'accueil{% endblock %}
+
+{% block body %}
+    <h1 class="text-center my-3">Bienvenue sur notre site{% if is_granted('ROLE_USER') %}
+        {{ user.prenom }}
+    {% endif %}</h1>
+    
+    {% include "carousel.html.twig" %}
+    
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">
+            Les différents types de musique pour vous
+            {% if is_granted('ROLE_USER') %}
+                {{ user.prenom }}
+            {% endif %}
+        </h1>
+
+        <div class="row">
+            {% for category in categories %}
+                <div class="col-md-4 mb-3">
+                    <div class="card shadow-sm h-100">
+                        <img src="{{ asset('uploads/images/products/' ~ category.picture) }}" alt="{{ category.name }}" class="card-img-top" style="height: 200px; object-fit: cover; margin-top: 10px;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ category.name }}</h5>
+                            <p class="card-text text-muted">{{ category.description }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <a href="{{ path('app_category_show', {'id': category.id}) }}" class="btn btn-primary">Découvrir</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% if loop.index % 3 == 0 %}
+                    </div><div class="row">
+                {% endif %}
+            {% else %}
+                <div class="col-md-12">
+                    <p>Aucune catégorie disponible.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

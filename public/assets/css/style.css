@@ -1,0 +1,83 @@
+ /* Styles personnalisés */
+ body {
+    background-color: #f5f5f5;
+  }
+
+  header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    padding: 20px;
+  }
+
+  .header-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+  }
+
+  .product {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .product-title {
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  .product-price {
+    font-size: 16px;
+    color: #e84c3d;
+    margin-top: 5px;
+  }
+
+  .cart {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .cart-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .cart-item {
+    margin-bottom: 10px;
+  }
+
+  .cart-item-title {
+    font-size: 16px;
+  }
+
+  .cart-item-price {
+    font-size: 14px;
+    color: #e84c3d;
+  }
+
+  .button {
+    padding: 10px 20px;
+    background-color: #e84c3d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: #c0392b;
+  }
+
+  .connected-message {
+    font-size: 18px;
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}

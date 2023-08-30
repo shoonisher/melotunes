@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des catégories
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-dark">Liste des catégories</h1>
+	<a href="{{ path('app_admin_category_new') }}" class="btn btn-success my-3">Créer une nouvelle catégorie</a>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Nom</th>
+				<th>Description</th>
+				<th>Image</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for category in categories %}
+				<tr>
+					<td>{{ category.name }}</td>
+					<td>{{ category.description }}</td>
+					<td><img src="{{ asset('uploads/images/products/' ~ category.picture) }}" alt="{{ category.name }}" width="100"></td>
+					<td>
+						<a href="{{ path('app_admin_category_show', {'id': category.id}) }}" class="btn btn-primary btn-sm">Détails</a>
+						<a href="{{ path('app_admin_category_edit', {'id': category.id}) }}" class="btn btn-info btn-sm">Modifier</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5" class="text-dark">Aucun enregistrement trouvé</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category: {{ category.name }}{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="mb-1">La Catégorie de Musique choisie est {{ category.name }}</h1>
+            </div>
+        </div>
+
+        <a href="{{ path('app_home') }}" class="btn btn-primary mt-3 mb-5"><i class="fas fa-arrow-left"></i></a>
+
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-4 mb-4">
+                    <div class="card p-3" style="max-width: 540px;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="{{ asset('/uploads/images/products/') ~ product.picture }}" class="img-fluid rounded-start" alt="{{ product.name }}">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ product.name }}</h5>
+                                    <p class="card-text">{{ product.description }}</p>
+                                    <p class="card-text">
+                                        <small class="text-body-secondary">Prix: {{ product.price }} €</small>
+                                    </p>
+                                    <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-primary">Détails de l'article</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-md-12">
+                    <p>Aucune musique trouvée pour cette catégorie.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

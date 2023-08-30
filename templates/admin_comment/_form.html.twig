@@ -1,0 +1,33 @@
+{{ form_start(form) }}
+<div class="card mt-4">
+	<div class="card-body">
+		<div class="form-group">
+
+			<div class="form-group">
+				{{ form_label(form.product)}}
+				{{ form_widget(form.product, {'attr': {'class': 'form-input'}}) }}
+			</div>
+
+			<div class="form-group">
+				{{ form_label(form.content)}}
+				{{ form_widget(form.content, {'attr': {'class': 'form-textarea'}}) }}
+			</div>
+
+			<div class="form-group">
+				{{ form_label(form.son) }}
+				{{ form_row(form.son, {'attr': {'class': 'form-input'}}) }}
+			</div>
+
+			<div class="form-group">
+				{{ form_label(form.user)}}
+				{{ form_row(form.user, {'attr': {'class': 'form-input'}}) }}
+			</div>
+
+			<div>
+				<button class="btn btn-success text-white mt-3">{{ button_label|default('Enregistrer') }}</button>
+			</div>
+
+		</div>
+	</div>
+</div>
+{{ form_end(form) }}
