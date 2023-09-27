@@ -1,7 +1,22 @@
  /* Styles personnalisés */
- body {
-    background-color: #f5f5f5;
-  }
+ footer {
+  flex-shrink: 0;
+  background-color: rgba(92, 185, 255, 1);
+  color: #ffffff; /* Couleur du texte du footer */
+  padding-top: 1rem;
+  padding-bottom: 0.5rem;
+  margin-top: 5rem; /* Espacement entre le contenu principal et le footer */
+}
+
+/* Styles pour le corps de la page */
+body {
+  background-color: rgb(142, 233, 150);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
   header {
     background-color: #fff;
@@ -17,7 +32,7 @@
   }
 
   .product {
-    background-color: #fff;
+    background-color: #fd0303;
     padding: 20px;
     margin: 20px;
     border-radius: 5px;
@@ -36,7 +51,7 @@
   }
 
   .cart {
-    background-color: #fff;
+    background-color: #fa0101;
     padding: 20px;
     margin: 20px;
     border-radius: 5px;
@@ -81,3 +96,12 @@
     text-align: center;
     margin-top: 20px;
 }
+
+.container{
+  flex: 1;
+}
+
+.div-card-body {
+  background-color: red;
+}
+

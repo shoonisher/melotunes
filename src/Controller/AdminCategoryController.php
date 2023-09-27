@@ -85,7 +85,7 @@ class AdminCategoryController extends AbstractController
             $pictureFile = $form['picture']->getData();
 
             if ($pictureFile) {
-                $newFileName = $slugger->slug($category->getName()) . '.' . $pictureFile->getClientOriginalExtension();
+                $newFileName = uniqid() . '.' . $pictureFile->getClientOriginalExtension();
 
                 try {
                     $pictureFile->move($this->getParameter('kernel.project_dir') . '/public/uploads/images/products', $newFileName);

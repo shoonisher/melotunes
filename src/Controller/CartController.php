@@ -3,14 +3,27 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use App\Repository\ProductRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CartController extends AbstractController
 {
+    protected $productRepository;
+    protected $requestStack;
+
+    // Création des services du panier et du repo 
+    public function __construct(ProductRepository $productRepository, RequestStack $requestStack)
+    {
+        $this->productRepository = $productRepository;
+        $this->requestStack = $requestStack; 
+    }
+
+
     #[Route('/cart', name: 'app_cart')]
     public function index(SessionInterface $session, ManagerRegistry $doctrine): Response
     {
@@ -55,9 +68,6 @@ class CartController extends AbstractController
         #ETAPE 1 : On récupere la session 'panier' si elle existe - sinon elle est créée avec un tableau vide
         $panier = $session->get('panier', []);
 
-        // $panier[2] = 1;
-        // $panier[8] = 3;
-
         #ETAPE 2 : On ajoute la quantité au produit de l'id $id
         if(!empty($panier[$id]))
         {
@@ -73,7 +83,12 @@ class CartController extends AbstractController
 
         $this->addFlash('add_cart', "Le produit a bien été ajouté a votre panier");
 
-        return $this->redirectToRoute('app_home');
+        // Récupération de la page précédente 
+        $request = $this->requestStack->getCurrentRequest();
+        $referer = $request->headers->get('referer');
+
+        // Redirection vers la page précédente 
+        return $this->redirect($referer);
     }
 
     #[Route('/cart/delete/{id}', name: 'cart_delete')]

@@ -5,6 +5,8 @@ namespace App\Controller;
 use Stripe\Stripe;
 use App\Entity\User;
 use App\Entity\Product;
+use App\Entity\PurchaseItem;
+use App\Repository\ProductRepository;
 use Stripe\Checkout\Session;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Mime\Message;
@@ -13,12 +15,21 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PaymentController extends AbstractController
 {
+    protected $productRepository;
+
+    // Création des services du panier et du repo 
+    public function __construct(ProductRepository $productRepository)
+    {
+        $this->productRepository = $productRepository;
+    }
+
     #[Route('/checkout', name: 'app_payment_checkout')]
     public function checkout($stripe_SK, SessionInterface $session_panier, ManagerRegistry $doctrine): Response
     {
@@ -67,11 +78,30 @@ class PaymentController extends AbstractController
     public function success(SessionInterface $session, MailerInterface $mailer): Response
     {
         $user = $this->getUser();
-        $userEmail = $user->getEmail();
 
+
+        if ($user instanceof UserInterface) {
+            $userEmail = $user->getEmail();
+        }
+
+        $items = [];
+        $cart_data = $session->get('panier', []);
+        
+        foreach ($cart_data as $id => $qty) {
+            $oneproduct = $this->productRepository->find($id);
+            
+            $items[]= [
+                "id" => $oneproduct->getId(),
+                "name" => $oneproduct->getName(),
+                "description" => $oneproduct->getDescription(),
+                "price" => $oneproduct->getPrice(),
+                "quantity" => $qty
+            ];
+        }
+        
         $panier_data = $session->get('panier', []);
 
-        $session->remove('panier');
+       
         
         // Envoie d'un e-mail de confirmation
         $email = (new TemplatedEmail())
@@ -80,13 +110,15 @@ class PaymentController extends AbstractController
             ->subject('Confirmation de commande')
             ->htmlTemplate('emails/payment_success.html.twig')
             ->context([
-                'panier_data' => $panier_data,
+                'items' => $items
             ]);
 
         $mailer->send($email);
-        
+
+        $session->remove('panier');
+
         return $this->render('payment/success.html.twig', [
-            'panier_data' => $panier_data,
+            'items' => $items,
         ]);
     }
 
