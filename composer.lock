@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5a9eb3e12d0cda2d823223f86dfcc100",
+    "content-hash": "b923b703eb1a599ff30ccfe52e767b40",
     "packages": [
         {
             "name": "doctrine/cache",
@@ -1519,6 +1519,55 @@
                 "source": "https://github.com/karser/KarserRecaptcha3Bundle/tree/v0.1.24"
             },
             "time": "2023-07-03T17:14:18+00:00"
+        },
+        {
+            "name": "leogout/seo-bundle",
+            "version": "v1.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leogout/SeoBundle.git",
+                "reference": "a7af1339cf2b9aebc73bdaf24ee4a972b2dc37ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leogout/SeoBundle/zipball/a7af1339cf2b9aebc73bdaf24ee4a972b2dc37ab",
+                "reference": "a7af1339cf2b9aebc73bdaf24ee4a972b2dc37ab",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/framework-bundle": "~2.8|~3.0|~4.0|~5.0|~6.0",
+                "twig/twig": ">=2.7.0"
+            },
+            "require-dev": {
+                "phpspec/prophecy-phpunit": "^2.0",
+                "phpunit/phpunit": "^9.5",
+                "symfony/phpunit-bridge": "~5.0|~6.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Leogout\\Bundle\\SeoBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "leogout",
+                    "email": "leogout@gmail.com"
+                }
+            ],
+            "description": "A Symfony bundle to generate SEO meta tags.",
+            "keywords": [
+                "seo"
+            ],
+            "support": {
+                "issues": "https://github.com/leogout/SeoBundle/issues",
+                "source": "https://github.com/leogout/SeoBundle/tree/v1.3.0"
+            },
+            "time": "2022-08-12T12:57:41+00:00"
         },
         {
             "name": "monolog/monolog",
